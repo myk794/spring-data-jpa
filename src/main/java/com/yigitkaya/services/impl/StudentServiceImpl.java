@@ -38,4 +38,15 @@ public class StudentServiceImpl implements IStudentService{
 		return null;
 	}
 
+	@Override
+	public void deleteStudent(Integer id) {
+		Student foundStudent = getStudentById(id);
+		if(foundStudent!=null) {
+			studentRepository.delete(foundStudent);
+		}
+			
+		
+	}
+
+
 }
