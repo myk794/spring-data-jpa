@@ -18,6 +18,8 @@ import com.yigitkaya.dto.DtoStudentIU;
 import com.yigitkaya.entities.Student;
 import com.yigitkaya.services.IStudentService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("rest/api/student")
 public class StudentControllerImpl implements IStudentController {
@@ -27,7 +29,7 @@ public class StudentControllerImpl implements IStudentController {
 	
 	@PostMapping(path="/save")
 	@Override
-	public DtoStudent saveStudent(@RequestBody DtoStudentIU dtoStudentIU) {
+	public DtoStudent saveStudent(@RequestBody @Valid DtoStudentIU dtoStudentIU) {
 		return studentService.saveStudent(dtoStudentIU);
 	}
 
