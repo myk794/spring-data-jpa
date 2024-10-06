@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.yigitkaya.controller.IStudentController;
+import com.yigitkaya.dto.DtoStudent;
+import com.yigitkaya.dto.DtoStudentIU;
 import com.yigitkaya.entities.Student;
 import com.yigitkaya.services.IStudentService;
 
@@ -25,20 +27,20 @@ public class StudentControllerImpl implements IStudentController {
 	
 	@PostMapping(path="/save")
 	@Override
-	public Student saveStudent(@RequestBody Student student) {
-		return studentService.saveStudent(student);
+	public DtoStudent saveStudent(@RequestBody DtoStudentIU dtoStudentIU) {
+		return studentService.saveStudent(dtoStudentIU);
 	}
 
 	@GetMapping(path="/list")
 	@Override
-	public List<Student> getAllStudents() {
+	public List<DtoStudent> getAllStudents() {
 		// TODO Auto-generated method stub
 		return studentService.getAllStudents();
 	}
 
 	@GetMapping(path="/list/{id}")
 	@Override
-	public Student getStudentById(@PathVariable(name = "id") Integer id) {
+	public DtoStudent getStudentById(@PathVariable(name = "id") Integer id) {
 		// TODO Auto-generated method stub
 		return studentService.getStudentById(id);
 	}
@@ -52,9 +54,9 @@ public class StudentControllerImpl implements IStudentController {
 
 	@PutMapping(path="/update/{id}")
 	@Override
-	public Student updateStudent(@PathVariable(name="id") Integer id,@RequestBody Student updateStudent) {
+	public DtoStudent updateStudent(@PathVariable(name="id") Integer id,@RequestBody DtoStudentIU dtoStudentIU) {
 		// TODO Auto-generated method stub
-		return studentService.updateStudent(id, updateStudent);
+		return studentService.updateStudent(id, dtoStudentIU);
 	}
 
 }
